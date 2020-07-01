@@ -20,7 +20,8 @@
   "homepage": "https://github.com/dejavuhq/sub-routines-frontend#readme",
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "babel-loader": "^8.1.0",
