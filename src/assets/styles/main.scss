@@ -15,7 +15,7 @@ body {
 nav {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 360px;
 }
 nav ul {
   list-style: none;
@@ -27,6 +27,13 @@ nav ul {
 nav ul li {
   padding: 5px;
   border: 1px solid black;
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 input {
   height: 60px;
