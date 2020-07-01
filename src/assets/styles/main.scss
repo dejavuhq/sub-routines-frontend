@@ -1,8 +1,12 @@
+* {
+  box-sizing: border-box;
+}
 html, body {
   min-height: 100%;
 }
 body {
   font-family: 'Open Sans';
+  font-size: 16px;
   max-width: 360px;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(73,155,234,1) 0%, rgba(8,47,89,1) 100%);
@@ -34,15 +38,24 @@ input {
 }
 label {
   width: 100%;
+  font-size: 1.1rem;
 }
 .form-group {
   margin: 30px 0;
 }
 button {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 15px 25px;
+  border: 0;
+  background-color: #337ab7;
+  color: white;
+  font-size: 1.2rem;
 }
-form h1 {
+h1 {
   text-align: center;
   font-weight: 400;
+}
+.text-center {
+  text-align: center;
 }
