@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/styles/components/LoginForm.scss';
 
 class Login extends React.Component {
   constructor(props) {
@@ -17,13 +18,20 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input id="username" type="text" name="username" />
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password"/>
-        <button type="submit">Login</button>
+      <main className="main">
+      <h1 className="title">Login</h1>
+      <form className="form">
+        <div className="form-group">
+          <label className="form-group__label" htmlFor="username">Username</label>
+          <input className="form-control" type="text" id="username" name="username" />
+        </div>
+        <div className="form-group">
+          <label className="form-group__label" htmlFor="password">Password</label>
+          <input className="form-control" type="password" name="password" id="password" />
+        </div>
+        <button type="submit" className="btn">Continuar</button>
       </form>
+    </main>
     );
   }
 }
