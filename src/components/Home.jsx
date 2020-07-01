@@ -8,7 +8,7 @@ const Home = () => {
       <header className='header'>
         <p>Miércoles 1 de julio de 2020</p>
         <h2>Hábitos para hoy:</h2>
-        <p>Aún no has registrado ningún hábito <button>Agregar Hábito</button></p>
+        <p>Aún no has registrado ningún hábito <button className="small-btn">Agregar Hábito</button></p>
         <AddHabit />
       </header>
       <Nav />

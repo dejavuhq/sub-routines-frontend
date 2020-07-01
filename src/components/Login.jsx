@@ -7,7 +7,13 @@ class Login extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log('form submitted')
+    console.log('form submitted');
+    const target = e.target;
+    const credentials = {
+      username: target.username.value,
+      password: target.password.value
+    }
+    console.log(credentials);
   }
   render() {
     return (

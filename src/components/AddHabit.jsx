@@ -1,10 +1,11 @@
 import React from 'react';
+import '../assets/styles/components/AddHabit.scss';
 
 const AddHabit = () => {
   return (
     <>
-      <p>Agregar Hábito</p>
-      <form action="">
+      <p>Add Habit</p>
+      <form className="add-habit" action="">
         <label htmlFor="title">Title</label>
         <input type="text"/>
         <label htmlFor="frequency">Frequency</label>
@@ -19,6 +20,7 @@ const AddHabit = () => {
         <input type="checkbox" id="end-date" name="end-date" value="End Date" />
         <label htmlFor="habit-notes">Notes</label>
         <input id="habit-notes" type="text" />
+        <button type="submit">Add Habit</button>
       </form>
     </>
   );

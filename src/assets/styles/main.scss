@@ -44,6 +44,9 @@ input {
   background: transparent;
   width: 100%;
 }
+input[type="text"] {
+  font-size: 1.2rem;
+}
 input[type="radio"], input[type="checkbox"] {
   width: auto;
 }
@@ -58,4 +61,12 @@ h1 {
 }
 .text-center {
   text-align: center;
+}
+.small-btn {
+  font-size: 0.8rem;
+  padding: 4px;
+  font-weight: 400;
+  border: 1px solid white;
+  display: inline;
+  margin: 0;
 }

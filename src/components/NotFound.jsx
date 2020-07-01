@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => {
+const NotFound = () => {
   return (
     <header className='header'>
       <h1>404 Not Found</h1>
@@ -8,4 +8,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default NotFound;
