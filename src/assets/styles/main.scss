@@ -5,6 +5,8 @@ body {
   font-family: 'Open Sans';
   max-width: 360px;
   margin: 0 auto;
+  background: linear-gradient(135deg, rgba(73,155,234,1) 0%, rgba(8,47,89,1) 100%);
+  color: white;
 }
 nav {
   position: absolute;
@@ -21,4 +23,26 @@ nav ul {
 nav ul li {
   padding: 5px;
   border: 1px solid black;
+}
+input {
+  height: 60px;
+  color: white;
+  border: 0;
+  border-bottom: 3px solid white;
+  background: transparent;
+  width: 100%;
+}
+label {
+  width: 100%;
+}
+.form-group {
+  margin: 30px 0;
+}
+button {
+  display: block;
+  margin: 0 auto;
+}
+form h1 {
+  text-align: center;
+  font-weight: 400;
 }
