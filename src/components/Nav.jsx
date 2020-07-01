@@ -4,8 +4,8 @@ const Nav = () => {
   return (
     <nav>
       <ul>
-        <li>Home</li>
-        <li>Buscar</li>
+        <li><a href="/login"> Home</a></li>
+        <li><a href="/register"> Buscar</a></li>
         <li>Perfil</li>
       </ul>
     </nav>
