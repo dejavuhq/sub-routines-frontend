@@ -7,15 +7,16 @@ html, body {
 body {
   font-family: 'Open Sans';
   font-size: 16px;
-  max-width: 360px;
+  width: 360px;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(73,155,234,1) 0%, rgba(8,47,89,1) 100%);
   color: white;
 }
 nav {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 360px;
+  margin-top: 30px;
 }
 nav ul {
   list-style: none;
@@ -43,8 +44,12 @@ input {
   background: transparent;
   width: 100%;
 }
+input[type="radio"], input[type="checkbox"] {
+  width: auto;
+}
 label {
   width: 100%;
+  display: block;
   font-size: 1.1rem;
 }
 .form-group {
