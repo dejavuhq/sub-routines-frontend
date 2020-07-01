@@ -1,10 +1,11 @@
 import React from 'react';
+import '../assets/styles/components/AddHabit.scss';
 
 const AddHabit = () => {
   return (
     <>
       <p>Add Habit</p>
-      <form action="">
+      <form className="add-habit" action="">
         <label htmlFor="title">Title</label>
         <input type="text"/>
         <label htmlFor="frequency">Frequency</label>
