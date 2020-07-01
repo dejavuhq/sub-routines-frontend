@@ -3,7 +3,7 @@ import React from 'react';
 const AddHabit = () => {
   return (
     <>
-      <p>Agregar Hábito</p>
+      <p>Add Habit</p>
       <form action="">
         <label htmlFor="title">Title</label>
         <input type="text"/>
@@ -19,6 +19,7 @@ const AddHabit = () => {
         <input type="checkbox" id="end-date" name="end-date" value="End Date" />
         <label htmlFor="habit-notes">Notes</label>
         <input id="habit-notes" type="text" />
+        <button type="submit">Add Habit</button>
       </form>
     </>
   );
