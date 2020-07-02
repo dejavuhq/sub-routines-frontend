@@ -20,7 +20,7 @@ class Login extends React.Component {
     return (
       <main className="main">
       <h1 className="title">Login</h1>
-      <form className="form">
+      <form className="form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label className="form-group__label" htmlFor="username">Username</label>
           <input className="form-control" type="text" id="username" name="username" />
