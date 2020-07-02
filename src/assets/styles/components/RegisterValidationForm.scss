@@ -1,0 +1,47 @@
+.main {
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px 0;
+  background: #f5f7f9;
+}
+.verification-title {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 20px;
+  text-align: left;
+  color: #3f4852;
+}
+.form {
+  padding: 0 20px;
+}
+.form-group {
+  margin: 15px 0;
+}
+.form-group__label {
+  font-size: 15px;
+  color: #5e666d;
+  margin-bottom: 5px;
+}
+.form-control {
+  height: 30px;
+  padding-left: 15px;
+  color: #5e666d;
+  background: #ffffff;
+  box-shadow: 0 0 1px grey;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #5e666db6;
+  }
+}
+.btn {
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+  padding: 15px 25px;
+  font-weight: 600;
+  color: white;
+  border: 0;
+  background-color: #478dca;
+}
