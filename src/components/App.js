@@ -9,13 +9,13 @@ import "../assets/styles/main.scss";
 
 const App = () => (
   <BrowserRouter>
-      <Switch>
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register/validation' component={RegisterValidation} />
-        <Route component={NotFound} />
-      </Switch>
+    <Switch>
+      <Route exact path='/home' component={Home} />
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/register/validation' component={RegisterValidation} />
+      <Route component={NotFound} />
+    </Switch>
   </BrowserRouter>
 );
 
