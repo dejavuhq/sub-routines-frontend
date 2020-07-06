@@ -1,8 +1,8 @@
 import React from "react";
-import { RegisterForm } from "../components/RegisterForm";
+import RegisterForm from "../components/RegisterForm";
 
-export const Register = () => {
+export const Register = (props) => {
   return (
-    <RegisterForm/>
+    <RegisterForm history={props.history}/>
   )
 };

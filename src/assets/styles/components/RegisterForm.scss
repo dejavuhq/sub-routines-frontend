@@ -33,6 +33,15 @@
     color: #5e666db6;
   }
 }
+input[type="email"]:invalid:focus {
+  box-shadow: 0px 0px 3px 1px #dc3545;
+}
+input[type="password"]:invalid:focus {
+  box-shadow: 0px 0px 3px 1px #dc3545;
+}
+input[name="passwordConfirmation"]:invalid:focus {
+  box-shadow: 0px 0px 3px 1px #dc3545;
+}
 .btn {
   display: block;
   width: 100%;
@@ -42,4 +51,5 @@
   color: white;
   border: 0;
   background-color: #478dca;
+  cursor: pointer;
 }
