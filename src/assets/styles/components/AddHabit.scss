@@ -43,3 +43,13 @@
   border: 0;
   background-color: #478dca;
 }
+.add-habit {
+  input[type="radio"], input[type="checkbox"] {
+    height: auto;
+  }
+  .end-date {
+    height: auto;
+    width: auto;
+    background-color: white;
+  }
+}
