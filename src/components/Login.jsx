@@ -25,7 +25,7 @@ class Login extends React.Component {
         body: JSON.stringify(credentials)
       })
       .then(response => {
-        console.log(response);
+        console.log(response.json());
       })
       //console.log(response.json());
     }
