@@ -47,6 +47,9 @@
   input[type="radio"], input[type="checkbox"] {
     height: auto;
   }
+  .add-habit-row {
+    display: flex;
+  }
   .end-date {
     height: auto;
     width: auto;
