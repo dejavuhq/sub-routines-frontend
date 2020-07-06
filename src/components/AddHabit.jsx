@@ -20,12 +20,17 @@ class AddHabit extends React.Component {
             <option value="RRULE:FREQ=WEEKLY;INTERVAL=1;WKST=MO;BYDAY=FR">Every friday</option>
             <option value="RRULE:FREQ=DAILY;INTERVAL=2;WKST=MO">Every two days</option>
           </select>
-          <label htmlFor="private">Private</label>
-          <input name="privacy" type="radio"/>
-          <label htmlFor="private">Public</label>
-          <input name="privacy" type="radio"/>
-          <label htmlFor="vehicle1">End Date</label>
-          <input type="checkbox" id="end-date" name="endDate" value="true" />
+          <div className="add-habit-row">
+            <input name="privacy" type="radio"/>
+            <label htmlFor="private">Private</label>
+            <input name="privacy" type="radio"/>
+            <label htmlFor="private">Public</label>
+          </div>
+          <div className="add-habit-row">
+            <input type="checkbox" id="end-date" name="endDate" value="true" />
+            <label htmlFor="end-date">End Date</label>
+          </div>
+          <input className="end-date" type="text"/>
           <label htmlFor="habit-notes">Notes</label>
           <input name="notes" id="habit-notes" type="text" />
           <button className="btn" type="submit">Add Habit</button>
