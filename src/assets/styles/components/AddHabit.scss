@@ -44,8 +44,12 @@
   background-color: #478dca;
 }
 .add-habit {
-  input[type="radio"], input[type="checkbox"] {
+  input {
     height: auto;
+    background-color: white;
+  }
+  label {
+    font-size: 0.9rem;
   }
   .add-habit-row {
     display: flex;

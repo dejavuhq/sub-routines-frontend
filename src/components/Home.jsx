@@ -1,5 +1,6 @@
 import React from 'react';
 import AddHabit from './AddHabit';
+import HabitGraph from './HabitGraph';
 import Nav from './Nav';
 
 class Home extends React.Component {
@@ -41,6 +42,7 @@ class Home extends React.Component {
           <p>Aún no has registrado ningún hábito <button className="small-btn">Agregar Hábito</button></p>
           <AddHabit handleSubmit={this.handleSubmit} />
         </header>
+        <HabitGraph />
         <Nav />
       </>
     );
