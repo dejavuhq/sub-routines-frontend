@@ -19,6 +19,18 @@ class Home extends React.Component {
       notes: target.notes.value
     }
     console.log(habit);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(habit)
+    };
+    fetch("dejavuhq.xyz/api/habits", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
   render() {
     return (
