@@ -1,46 +1,36 @@
 import React from 'react';
-import regeneratorRuntime from 'regenerator-runtime';
 import '../assets/styles/components/LoginForm.scss';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      form: {
+        username: "",
+        password: ""
+      }
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     console.log('form submitted');
     const target = e.target;
-    const credentials = {
-      "username": target.username.value,
-      "password": target.password.value
-    }
-    async function postLogin() {
-      const response = await fetch('http://dejavuhq.xyz/api/users/login', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials)
-      })
-      .then(response => {
-        console.log(response.json());
-      })
-      //console.log(response.json());
-    }
-    console.log(credentials);
-    await postLogin();
-    /* fetch('dejavuhq.xyz/api/users/login', {
+
+    const requestOptions = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(credentials),
-    })
-    .then(response => response.json())
-    .then(data => console.log('Success: ', data))
-    .catch(error => console.log('There was an errrrror: ' + error)) */
+      body: JSON.stringify({
+        username: target.username.value,
+        password: target.password.value
+      })
+    };
+    fetch("https://dejavuhq.xyz/api/users/login", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
   render() {
     return (
