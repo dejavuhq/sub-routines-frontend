@@ -1,0 +1,26 @@
+.habitCard {
+  width: 90%;
+  padding: 15px;
+  margin-bottom: 25px;
+  color: white;
+  background: linear-gradient(135deg, #356ca7 50%, #499bea 100%);
+  border-radius: 15px;
+  box-shadow: 0px 0px 17px -5px black;
+}
+.habitCard__name {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+}
+.habitCard__frequency {
+  margin: 0;
+  font-size: 14px;
+}
+.habitCard__startDate {
+  margin: 0;
+  font-size: 14px;
+}
+.habitCard__finishDate {
+  margin: 0;
+  font-size: 14px;
+}

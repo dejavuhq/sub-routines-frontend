@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 * {
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 html, body {
   min-height: 100%;
@@ -10,7 +12,6 @@ body {
   width: 360px;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(73,155,234,1) 0%, rgba(8,47,89,1) 100%);
-  color: white;
 }
 form {
   padding: 10px 20px;
