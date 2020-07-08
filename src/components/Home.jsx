@@ -12,12 +12,15 @@ class Home extends React.Component {
     e.preventDefault();
     const target = e.target;
     const habit = {
-      title: target.title.value,
-      owner: 'owner',
-      frequency: target.frequency.value,
-      privacy: target.privacy.value,
-      endDate: target.endDate.checked,
-      notes: target.notes.value
+      name: target.title.value,
+      description: target.notes.value,
+      recurrence: target.frequency.value,
+      owner: 'raul',
+      is_public: target.privacy.value,
+      is_completed: false,
+      is_paused: false,
+      start_date: "2020-07-01",
+      endDate: null,
     }
     console.log(habit);
 

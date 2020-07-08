@@ -1,0 +1,25 @@
+nav {
+  position: relative;
+  bottom: 0;
+  width: 360px;
+  margin-top: 30px;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+nav ul li {
+  padding: 5px;
+  border: 1px solid #a3a3a3;
+  flex-grow: 1;
+  text-align: center;
+  background-color: #d8d8d8;
+  color: #515151;
+}
+nav ul li a {
+  color: #515151;
+  text-decoration: none;
+}
