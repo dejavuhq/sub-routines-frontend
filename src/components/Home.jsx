@@ -1,5 +1,6 @@
 import React from 'react';
 import AddHabit from './AddHabit';
+import HabitGraph from './HabitGraph';
 import Nav from './Nav';
 
 class Home extends React.Component {
@@ -14,14 +15,26 @@ class Home extends React.Component {
       name: target.title.value,
       description: target.notes.value,
       recurrence: target.frequency.value,
-      owner: 'raul',
-      is_public: target.privacy.value,
+      owner: 'alex',
+      is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
       start_date: "2020-07-01",
       endDate: null,
     }
     console.log(habit);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(habit)
+    };
+    fetch("dejavuhq.xyz/api/habits", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
   render() {
     return (
@@ -32,6 +45,7 @@ class Home extends React.Component {
           <p>Aún no has registrado ningún hábito <button className="small-btn">Agregar Hábito</button></p>
           <AddHabit handleSubmit={this.handleSubmit} />
         </header>
+        <HabitGraph />
         <Nav />
       </>
     );
