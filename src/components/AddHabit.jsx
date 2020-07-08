@@ -21,10 +21,8 @@ class AddHabit extends React.Component {
             <option value="RRULE:FREQ=DAILY;INTERVAL=2;WKST=MO">Every two days</option>
           </select>
           <div className="add-habit-row">
-            <input name="privacy" type="radio"/>
-            <label htmlFor="private">Private</label>
-            <input name="privacy" type="radio"/>
-            <label htmlFor="private">Public</label>
+            <input type="checkbox" id="privacy" name="privacy" />
+            <label htmlFor="privacy">Public</label>
           </div>
           <div className="add-habit-row">
             <input type="checkbox" id="end-date" name="endDate" value="true" />
