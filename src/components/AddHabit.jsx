@@ -12,7 +12,7 @@ class AddHabit extends React.Component {
         <form className="add-habit" action="" onSubmit={this.props.handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Title</label>
-            <input className="form-control" type="text"/>
+            <input name="title" id="title" className="form-control" type="text"/>
           </div>
           <label htmlFor="frequency">Frequency</label>
           <select name="frequency" id="frequency">
