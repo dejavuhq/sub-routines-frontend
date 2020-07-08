@@ -1,8 +1,24 @@
-import React from "react";
-import { HabitCard } from "./HabitCard";
+import React, { useState } from "react";
+import { HabitsList } from "./HabitsList";
+import { UserStats } from "./UserStats";
+
 import "../assets/styles/components/Profile.scss";
 
 export const Profile = () => {
+  const [lookingStats, setLookingStats] = useState(false);
+  const handleClick = (e) => {
+    const habitsButton = document.getElementsByName("habits")[0];
+    const statsButton = document.getElementsByName("stats")[0];
+    if(e.target.name === "stats") {
+      setLookingStats(true);
+      habitsButton.classList.remove("active");
+      statsButton.classList.add("active");
+    } else {
+      setLookingStats(false);
+      habitsButton.classList.add("active");
+      statsButton.classList.remove("active");
+    }
+  }
   return (
     <main className="profile">
       <img
@@ -13,11 +29,14 @@ export const Profile = () => {
       <p className="profile__biography">Cofounder and CEO of Platzi: With over 1,000,000 students around the world, Platzi is the biggest tech school in Latam.</p>
       <p className="profile__joinDate">Fecha de union: <span>20/08/2019</span></p>
       <div className="profile__links">
-        <a href="#">Habitos</a>
-        <a href="#">Estadisticas</a>
+        <button className="profile__button active" name="habits" onClick={handleClick}>Habitos</button>
+        <button className="profile__button" name="stats" onClick={handleClick}>Estadisticas</button>
       </div>
-      <HabitCard />
-      <HabitCard />
+      {
+        lookingStats
+        ? <UserStats/>
+        : <HabitsList />
+      }
     </main>
   );
 }
