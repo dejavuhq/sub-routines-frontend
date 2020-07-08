@@ -15,7 +15,7 @@ class Home extends React.Component {
       name: target.title.value,
       description: target.notes.value,
       recurrence: target.frequency.value,
-      owner: 'alex',
+      owner: '',
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
