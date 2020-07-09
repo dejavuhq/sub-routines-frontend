@@ -3,12 +3,8 @@ import AddHabit from './AddHabit';
 import HabitGraph from './HabitGraph';
 import Nav from './Nav';
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleSubmit(e) {
+const Home = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const target = e.target;
     const habit = {
@@ -36,20 +32,18 @@ class Home extends React.Component {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
-  render() {
-    return (
-      <>
-        <header className='header'>
-          <p>Miércoles 1 de julio de 2020</p>
-          <h2>Hábitos para hoy:</h2>
-          <p>Aún no has registrado ningún hábito <button className="small-btn">Agregar Hábito</button></p>
-          <AddHabit handleSubmit={this.handleSubmit} />
-        </header>
-        <HabitGraph />
-        <Nav />
-      </>
-    );
-  }
+  return (
+    <>
+      <header className='header'>
+        <p>Miércoles 1 de julio de 2020</p>
+        <h2>Hábitos para hoy:</h2>
+        <p>Aún no has registrado ningún hábito <button className="small-btn">Agregar Hábito</button></p>
+        <AddHabit handleSubmit={handleSubmit} />
+      </header>
+      <HabitGraph />
+      <Nav />
+    </>
+  );
 }
 
 export default Home;
