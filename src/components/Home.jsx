@@ -24,11 +24,13 @@ const Home = () => {
     const requestOptions = {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": ""
       },
       body: JSON.stringify(habit)
     };
-    fetch("dejavuhq.xyz/api/habits", requestOptions)
+    console.log(requestOptions.body);
+    fetch("https://dejavuhq.xyz/api/habits", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

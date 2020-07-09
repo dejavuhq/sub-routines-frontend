@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import '../assets/styles/components/LoginForm.scss';
 
 const Login = () => {
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('form submitted');
@@ -18,7 +20,13 @@ const Login = () => {
       })
     };
     fetch("https://dejavuhq.xyz/api/users/login", requestOptions)
-      .then(response => response.json())
+      .then(response => {
+        if(response.status === 200){
+          history.push("/home");
+        } else {
+          return response.json();
+        }
+      })
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
