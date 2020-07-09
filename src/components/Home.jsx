@@ -6,6 +6,7 @@ import Nav from './Nav';
 const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    let dateNow = new Date().toISOString().substr(0, 10);
     const target = e.target;
     const habit = {
       name: target.title.value,
@@ -15,7 +16,7 @@ const Home = () => {
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
-      start_date: "2020-07-01",
+      start_date: dateNow,
       endDate: null,
     }
     console.log(habit);
