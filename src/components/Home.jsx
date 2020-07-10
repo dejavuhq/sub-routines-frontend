@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../context/UserContext';
 import AddHabit from './AddHabit';
 import HabitGraph from './HabitGraph';
 import Nav from './Nav';
 
 const Home = () => {
+  const { user, setUser } = useContext(UserContext);
+  console.log('This is the user in Home:')
+  console.log(user);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let dateNow = new Date().toISOString().substr(0, 10);
