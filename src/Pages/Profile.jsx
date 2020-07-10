@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { HabitsList } from "./HabitsList";
-import { UserStats } from "./UserStats";
+import { HabitsList } from "../components/HabitsList";
+import { UserStats } from "../components/UserStats";
 
-import "../assets/styles/components/Profile.scss";
+import "../assets/styles/pages/Profile.scss";
 
 export const Profile = () => {
   const [lookingStats, setLookingStats] = useState(false);
