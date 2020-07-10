@@ -17,7 +17,6 @@ const Home = () => {
       name: target.title.value,
       description: target.notes.value,
       recurrence: target.frequency.value,
-      owner: '',
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
@@ -30,11 +29,10 @@ const Home = () => {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": ""
+        "Authorization": `Bearer ${user.token}`
       },
       body: JSON.stringify(habit)
     };
-    console.log(requestOptions.body);
     fetch("https://dejavuhq.xyz/api/habits", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
