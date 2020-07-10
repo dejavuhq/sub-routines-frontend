@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../assets/styles/components/LoginForm.scss';
+import UserContext from '../context/UserContext';
 
 const Login = () => {
   const history = useHistory();
+  const { user, setUser } = useContext(UserContext);
+  console.log('This is the user:')
+  console.log(user);
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('form submitted');
     const target = e.target;
+    
 
     const requestOptions = {
       method: 'POST',
@@ -22,12 +29,20 @@ const Login = () => {
     fetch("https://dejavuhq.xyz/api/users/login", requestOptions)
       .then(response => {
         if(response.status === 200){
-          history.push("/home");
+          const res = response.json();
+          res.then(result => {
+            //console.log(result.token);
+            setUser({
+              user: result.user,
+              token: result.token
+            });
+            history.push("/home");
+          });
         } else {
           return response.json();
         }
       })
-      .then(result => console.log(result))
+      .then(result => console.log('this was' + result))
       .catch(error => console.log('error', error));
   }
   return (
