@@ -1,11 +1,15 @@
 import React from "react";
+import '../assets/styles/components/HabitSmall.scss';
 
-export const HabitsList = () => {
+const HabitSmall = (props) => {
+  console.log(props);
   return (
-    <div>
-      <span>Habit Title</span>
-      <button>Done</button>
+    <div className="small-habit-row">
+      <span>{props.name}</span>
+      <button className="done">Done</button>
       <button>Settings</button>
     </div>
   )
 }
+
+export default HabitSmall;
