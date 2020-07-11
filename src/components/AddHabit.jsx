@@ -18,19 +18,19 @@ const AddHabit = (props) => {
           <option value="RRULE:FREQ=DAILY;INTERVAL=2;WKST=MO">Every # weeks</option>
         </select>
         <div className="add-habit-row">
-          <input type="checkbox" id="monday" name="monday" />
+          <input type="checkbox" id="monday" name="monday" value="MO" />
           <label htmlFor="monday">Monday</label>
-          <input type="checkbox" id="tuesday" name="tuesday" />
+          <input type="checkbox" id="tuesday" name="tuesday" value="TU" />
           <label htmlFor="tuesday">Tuesday</label>
-          <input type="checkbox" id="wednesday" name="wednesday" />
+          <input type="checkbox" id="wednesday" name="wednesday" value="WE" />
           <label htmlFor="wednesday">Wednesday</label>
-          <span><input type="checkbox" id="thursday" name="thursday" />
+          <span><input type="checkbox" id="thursday" name="thursday" value="TH" />
           <label htmlFor="thursday">Thursday</label></span>
-          <input type="checkbox" id="friday" name="friday" />
+          <input type="checkbox" id="friday" name="friday" value="FR" />
           <label htmlFor="friday">Friday</label>
-          <input type="checkbox" id="saturday" name="saturday" />
+          <input type="checkbox" id="saturday" name="saturday" value="SA" />
           <label htmlFor="saturday">Saturday</label>
-          <input type="checkbox" id="sunday" name="sunday" />
+          <input type="checkbox" id="sunday" name="sunday" value="SU" />
           <label htmlFor="sunday">Sunday</label>
         </div>
         <div className="add-habit-row">
