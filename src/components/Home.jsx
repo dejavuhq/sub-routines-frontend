@@ -19,7 +19,7 @@ const Home = () => {
     const requestOptions = {
       method: 'GET',
       headers: {
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NDIzNTM4LCJqdGkiOiIxYWUxNjVlNGM0ZTc0NTVkYmI2MzUyNjZkMmU5NDZmMiIsInVzZXJfaWQiOjJ9.sRah49EELK3hcProcYr68RUm9s5pjq67scWTHoXkwgs`
+        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTA4NTMwLCJqdGkiOiI4NWRhMTZlOTRlOWU0MjFmYjdkNGM4NDBjM2E0MWFmMSIsInVzZXJfaWQiOjJ9.dwV7qzZ_5OxK-wNYGOt77uZbFRGRloXs5EH7stcyVeQ`
       }
     };
     fetch("https://dejavuhq.xyz/api/habits", requestOptions)
@@ -53,7 +53,7 @@ const Home = () => {
       headers: {
         "Content-Type": "application/json",
         /* "Authorization": `Bearer ${user.token}` */
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NDIzNTM4LCJqdGkiOiIxYWUxNjVlNGM0ZTc0NTVkYmI2MzUyNjZkMmU5NDZmMiIsInVzZXJfaWQiOjJ9.sRah49EELK3hcProcYr68RUm9s5pjq67scWTHoXkwgs`
+        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTA4NTMwLCJqdGkiOiI4NWRhMTZlOTRlOWU0MjFmYjdkNGM4NDBjM2E0MWFmMSIsInVzZXJfaWQiOjJ9.dwV7qzZ_5OxK-wNYGOt77uZbFRGRloXs5EH7stcyVeQ`
       },
       body: JSON.stringify(habit)
     };
