@@ -35,7 +35,7 @@ export const Profile = () => {
       {
         lookingStats
         ? <UserStats/>
-        : <HabitsList />
+        : <HabitsList habits="publics"/>
       }
     </main>
   );
