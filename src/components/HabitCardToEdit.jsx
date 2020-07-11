@@ -9,17 +9,17 @@ export class HabitCardToEdit extends React.Component {
     super(props);
     this.state = {
       data: {
-        id: this.props.id | 12345,
-        name: this.props.name || "Estudiar",
-        description: this.props.description || "Estudiar para no perder el semestre",
-        recurrence: this.props.recurrence || "Lunes a viernes",
-        is_public: this.props.is_public || true,
-        is_paused: this.props.is_paused || false,
-        start_date: this.props.start_date || "07/09/2019",
-        end_date: this.props.end_date || null,
-        total_instances: this.props.total_instances || 7,
-        total_instances_done: this.props.total_instances_done || 7,
-        completion_rate: this.props.completion_rate || 1.0
+        id: this.props.data.id || 12345,
+        name: this.props.data.name || "Estudiar",
+        description: this.props.data.description || "Estudiar para no perder el semestre",
+        recurrence: this.props.data.recurrence || "Lunes a viernes",
+        is_public: this.props.data.is_public || true,
+        is_paused: this.props.data.is_paused || false,
+        start_date: this.props.data.start_date || "07/09/2019",
+        end_date: this.props.data.end_date || null,
+        total_instances: this.props.data.total_instances || 7,
+        total_instances_done: this.props.data.total_instances_done || 7,
+        completion_rate: this.props.data.completion_rate || 1.0
       }
     }
   }
@@ -29,17 +29,16 @@ export class HabitCardToEdit extends React.Component {
         <Link
           to={
             {
-              pathname: `/configuration/habits/123`,
+              pathname: `/configuration/habits/${this.state.data.id}`,
               state: {
-                habitData: this.state.data,
-                hola: "doncho"
+                habitData: this.state.data
               }
             }}
           className="habitCardToEdit__editButton"><MdModeEdit size="20px"/></Link>
-        <h3 className="habitCardToEdit__name">Nombre del hábito</h3>
-        <p className="habitCardToEdit__frequency">Frecuencia: Lunes a viernes</p>
-        <p className="habitCardToEdit__startDate">Inicio: 28/08/2019</p>
-        <p className="habitCardToEdit__finishDate">Final: 07/01/2020</p>
+        <h3 className="habitCardToEdit__name">{this.state.data.name}</h3>
+        <p className="habitCardToEdit__frequency">Frecuencia: {this.state.data.recurrence}</p>
+        <p className="habitCardToEdit__startDate">Inicio: {this.state.data.start_date}</p>
+        <p className="habitCardToEdit__finishDate">Final: {this.state.data.end_date? this.state.data.end_date: "Indefinido"}</p>
       </div>
     )
   }

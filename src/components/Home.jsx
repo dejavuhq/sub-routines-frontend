@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from "react-router-dom";
 import UserContext from '../context/UserContext';
 import AddHabit from './AddHabit';
 import HabitGraph from './HabitGraph';
@@ -47,6 +48,7 @@ const Home = () => {
         <AddHabit handleSubmit={handleSubmit} />
       </header>
       <HabitGraph />
+      <Link to="/configuration/habits">Habitooos</Link>
       <Nav />
     </>
   );
