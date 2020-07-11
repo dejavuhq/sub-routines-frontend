@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/components/RegisterForm.scss";
 
-class RegisterForm extends React.Component{
+export class RegisterForm extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -133,5 +133,3 @@ class RegisterForm extends React.Component{
     )
   }
 };
-
-export default RegisterForm;
