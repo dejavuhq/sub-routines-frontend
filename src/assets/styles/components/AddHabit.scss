@@ -54,6 +54,10 @@
   }
   .add-habit-row {
     display: flex;
+    flex-wrap: wrap;
+    label {
+      width: auto;
+    }
   }
   .end-date {
     height: auto;

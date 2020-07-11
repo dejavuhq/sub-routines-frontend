@@ -13,9 +13,25 @@ const AddHabit = (props) => {
         <label htmlFor="frequency">Frequency</label>
         <select name="frequency" id="frequency">
           <option value="RRULE:FREQ=DAILY;INTERVAL=1">Daily</option>
-          <option value="RRULE:FREQ=WEEKLY;INTERVAL=1;WKST=MO;BYDAY=FR">Every friday</option>
+          <option value="RRULE:FREQ=WEEKLY;INTERVAL=1;WKST=MO;BYDAY=FR">Weekly</option>
           <option value="RRULE:FREQ=DAILY;INTERVAL=2;WKST=MO">Every two days</option>
         </select>
+        <div className="add-habit-row">
+          <input type="checkbox" id="monday" name="monday" />
+          <label htmlFor="monday">Monday</label>
+          <input type="checkbox" id="tuesday" name="tuesday" />
+          <label htmlFor="tuesday">Tuesday</label>
+          <input type="checkbox" id="wednesday" name="wednesday" />
+          <label htmlFor="wednesday">Wednesday</label>
+          <input type="checkbox" id="thursday" name="thursday" />
+          <label htmlFor="thursday">Thursday</label>
+          <input type="checkbox" id="friday" name="friday" />
+          <label htmlFor="friday">Friday</label>
+          <input type="checkbox" id="saturday" name="saturday" />
+          <label htmlFor="saturday">Saturday</label>
+          <input type="checkbox" id="sunday" name="sunday" />
+          <label htmlFor="sunday">Sunday</label>
+        </div>
         <div className="add-habit-row">
           <input type="checkbox" id="privacy" name="privacy" />
           <label htmlFor="privacy">Public</label>
