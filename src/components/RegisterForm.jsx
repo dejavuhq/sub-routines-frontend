@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/styles/components/RegisterForm.scss";
 
 export class RegisterForm extends React.Component{
@@ -129,6 +130,8 @@ export class RegisterForm extends React.Component{
           </div>
           <button type="submit" className="btn">Continuar</button>
         </form>
+
+        <Link to="/login">Have an account? Login</Link>
       </main>
     )
   }

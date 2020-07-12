@@ -6,12 +6,9 @@ import UserContext from '../context/UserContext';
 const Login = () => {
   const history = useHistory();
   const { user, setUser } = useContext(UserContext);
-  console.log('This is the user:');
-  console.log(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('form submitted');
     const target = e.target;
 
     const requestOptions = {
@@ -29,7 +26,6 @@ const Login = () => {
         if (response.status === 200) {
           const res = response.json();
           res.then((result) => {
-            //console.log(result.token);
             if (result.user.biography === null) {
               setUser({
                 user: { ...result.user, biography: '' },
@@ -49,7 +45,7 @@ const Login = () => {
           return response.json();
         }
       })
-      .then((result) => console.log('this was' + result))
+      .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
   };
   return (
