@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/styles/components/RegisterForm.scss";
 
 export class RegisterForm extends React.Component{
