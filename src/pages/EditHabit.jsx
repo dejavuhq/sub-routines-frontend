@@ -7,7 +7,8 @@ class EditHabitComponent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      habitData: this.props.location.state.habitData
+      habitData: this.props.location.state.data.data,
+      token: this.props.location.state.data.token
     }
   }
   handleCheck = (e) => {
@@ -18,6 +19,28 @@ class EditHabitComponent extends React.Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+    let requestOptions = {
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${this.state.token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state.habitData)
+    };
+    fetch(`https://dejavuhq.xyz/api/habits/${this.state.habitData.id}`, requestOptions)
+    .then(response => {
+      if(response.status === 200){
+        this.props.history.push("/configuration/habits");
+      } else {
+        return response.json();
+      }
+    })
+    .then(result => {
+      if(result) {
+        console.log("result: ", result);
+      }
+    })
+    .catch(error => console.log("Error: ", error));
   }
   render() {
     return (
