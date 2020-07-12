@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from "react";
-import { UserConsumer } from '../context/UserContext';
+import React, { useContext } from "react";
 import UserContext from '../context/UserContext';
 import "../assets/styles/pages/ProfileConfiguration.scss";
-import { useHistory } from "react-router-dom";
 
 export const ProfileConfiguration = (props) => {
   const { user, setUser } = useContext(UserContext)
