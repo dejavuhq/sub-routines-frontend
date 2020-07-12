@@ -2,7 +2,6 @@ import React from "react";
 import '../assets/styles/components/HabitSmall.scss';
 
 const HabitSmall = (props) => {
-  console.log(props);
   return (
     <div className="small-habit-row">
       <span>{props.name}</span>

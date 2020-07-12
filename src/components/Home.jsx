@@ -48,13 +48,11 @@ const Home = () => {
       start_date: dateNow,
       endDate: null,
     }
-    console.log(habit);
 
     const requestOptions = {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        /* "Authorization": `Bearer ${user.token}` */
         "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify(habit)

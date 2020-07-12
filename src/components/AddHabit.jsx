@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import RRuleGenerator from 'react-rrule-generator';
-import { RRule, RRuleSet, rrulestr } from 'rrule'
 import '../assets/styles/components/AddHabit.scss';
 
 const AddHabit = (props) => {
   const [rrule, setRrule] = useState('');
-  const [showPicker, setShowPicker] = useState('');
 
   return (
     <>
@@ -16,7 +14,6 @@ const AddHabit = (props) => {
           <input name="title" id="title" className="form-control" type="text"/>
         </div>
         <RRuleGenerator onChange={(rrule) => {
-          console.log(`RRule changed, now it's ${rrule}`);
           setRrule(rrule);
         }} />
         <input name="rrule" id="rrule" type="hidden" value={rrule} />
