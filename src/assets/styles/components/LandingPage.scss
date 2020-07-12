@@ -8,6 +8,15 @@ body {
     height: 60px;
     background-color: white;
   }
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .logo {
+    width: 90px;
+    height: auto;
+  }
   h1 {
     text-align: center;
   }

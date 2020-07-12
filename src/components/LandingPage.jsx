@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       <header className='header'>
-        <img src={logo} alt="dejavu logo" />
+        <img className="logo" src={logo} alt="dejavu logo" />
       </header>
       <h1>Track your Habits <br /> Reach your goals</h1>
       <button className="cta-btn"><Link to="/register">Get Started</Link></button>
