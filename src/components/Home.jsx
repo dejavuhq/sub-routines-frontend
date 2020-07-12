@@ -73,8 +73,10 @@ const Home = () => {
             <HabitSmall key={item.id} {...item} />
           )}
         </div>
-        <p>Aún no has registrado ningún hábito <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button></p>
+        <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button>
+        {habits.length == 0 ? <p>Aún no has registrado ningún hábito</p> : null}
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
+        {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
       </header>
       <HabitGraph />
       <Nav />
