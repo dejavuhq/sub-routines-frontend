@@ -10,7 +10,7 @@ const LandingPage = () => {
       <header className='header'>
         <img className="logo" src={logo} alt="dejavu logo" />
       </header>
-      <h1>Track your Habits <br /> Reach your goals</h1>
+      <h1><span className="small">Track your Habits</span> <br /> Reach your goals</h1>
       <button className="cta-btn"><Link to="/register">Get Started</Link></button>
       <img src={heatmap} alt="heatmap" />
     </div>
