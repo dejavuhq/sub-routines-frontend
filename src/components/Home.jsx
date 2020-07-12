@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import UserContext from '../context/UserContext';
 import AddHabit from './AddHabit';
 import HabitSmall from './HabitSmall';
@@ -14,6 +14,11 @@ const Home = () => {
   const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTIxNjc2LCJqdGkiOiIzZWZhNzgyMmY0M2Y0N2I0YTA1YTkzOGM0MDIyZGE5NCIsInVzZXJfaWQiOjJ9.J_2aEOJ0SpdecDHWpBhU4ll88lFNtP4W8GhgdBOvcp8";
   //console.log('This is the user in Home:')
   //console.log(user);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    getHabits();
+  });
   
 
   const getHabits = () => {
@@ -30,6 +35,7 @@ const Home = () => {
       })
       .catch(error => console.log('error', error));
   }
+
   console.log(habits);
 
   const handleSubmit = (e) => {
@@ -72,7 +78,6 @@ const Home = () => {
             <HabitSmall key={item.id} {...item} />
           )}
         </div>
-        <button onClick={getHabits}>Load Habits</button>
         <p>Aún no has registrado ningún hábito <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button></p>
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
       </header>
