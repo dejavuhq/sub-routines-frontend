@@ -53,7 +53,7 @@ export const ProfileConfiguration = (props) => {
     <section className="profileConfiguration">
       <img
         className="profileConfiguration__image"
-        src="https://pbs.twimg.com/profile_images/1062767896269590528/vOsDt9up_400x400.jpg"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb_Hhic635ynT_DOoTuvLCUqKNXjVmCa0HxA&usqp=CAU"
       />
       <button className="profileConfiguration__changeImageButton">Cambiar foto de perfil</button>
       <form className="profileConfiguration__form" onSubmit={handleSubmit}>
