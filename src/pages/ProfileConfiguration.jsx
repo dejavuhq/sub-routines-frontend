@@ -4,18 +4,8 @@ import UserContext from '../context/UserContext';
 import "../assets/styles/pages/ProfileConfiguration.scss";
 import { useHistory } from "react-router-dom";
 
-export const ProfileConfiguration = () => {
+export const ProfileConfiguration = (props) => {
   const { user, setUser } = useContext(UserContext)
-
-  useEffect(() => {
-    // setUser({
-    //   "user": {
-    //     ...user,
-    //     biography: ""
-    //   },
-    //   "token": user.token,
-    // })
-  }, []);
 
   const handleChange = (e) => {
     setUser({
@@ -48,7 +38,7 @@ export const ProfileConfiguration = () => {
     fetch(`https://dejavuhq.xyz/api/users/${user.user.username}`, requestOptions)
     .then(response => {
       if(response.status === 200){
-        this.props.history.push("/profile");
+        props.history.push("/profile");
       } else {
         return response.json();
       }
