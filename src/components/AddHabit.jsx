@@ -1,7 +1,16 @@
 import React from 'react';
+import { RRule, RRuleSet, rrulestr } from 'rrule'
 import '../assets/styles/components/AddHabit.scss';
 
 const AddHabit = (props) => {
+  const rule = new RRule({
+    freq: RRule.WEEKLY,
+    interval: 5,
+    byweekday: [RRule.MO, RRule.FR],
+    dtstart: new Date(Date.UTC(2012, 1, 1, 10, 30)),
+    until: new Date(Date.UTC(2012, 12, 31))
+  });
+
   return (
     <>
       <h3>Add Habit</h3>
@@ -30,16 +39,16 @@ const AddHabit = (props) => {
           <label htmlFor="friday">Friday</label>
           <input type="checkbox" id="saturday" name="saturday" value="SA" />
           <label htmlFor="saturday">Saturday</label>
-          <input type="checkbox" id="sunday" name="sunday" value="SU" />
-          <label htmlFor="sunday">Sunday</label>
+          <label htmlFor="sunday"><input type="checkbox" id="sunday" name="sunday" value="SU" />
+          Sunday</label>
         </div>
         <div className="add-habit-row">
           <label htmlFor="n-days">Day Interval</label>
-          <input id="n-days" name="n-weeks" type="text"/>
+          <input id="n-days" name="n-weeks" type="number"/>
         </div>
         <div className="add-habit-row">
           <label htmlFor="n-weeks">Week Interval</label>
-          <input id="n-weeks" name="n-weeks" type="text"/>
+          <input id="n-weeks" name="n-weeks" type="number"/>
         </div>
         <hr/>
         <div className="add-habit-row">
@@ -49,9 +58,9 @@ const AddHabit = (props) => {
         <div className="add-habit-row">
           <input type="checkbox" id="end-date" name="endDate" value="true" />
           <label htmlFor="end-date">End Date</label>
+          <input className="end-date" type="text" />
         </div>
-        <input className="end-date" type="text"/>
-        <label htmlFor="habit-notes">Notes</label>
+        <label htmlFor="habit-notes">Description</label>
         <input name="notes" id="habit-notes" type="text" />
         <button className="btn" type="submit">Add Habit</button>
       </form>

@@ -11,6 +11,7 @@ const Home = () => {
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString();
+  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTIxNjc2LCJqdGkiOiIzZWZhNzgyMmY0M2Y0N2I0YTA1YTkzOGM0MDIyZGE5NCIsInVzZXJfaWQiOjJ9.J_2aEOJ0SpdecDHWpBhU4ll88lFNtP4W8GhgdBOvcp8";
   //console.log('This is the user in Home:')
   //console.log(user);
   
@@ -19,7 +20,7 @@ const Home = () => {
     const requestOptions = {
       method: 'GET',
       headers: {
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTA4NTMwLCJqdGkiOiI4NWRhMTZlOTRlOWU0MjFmYjdkNGM4NDBjM2E0MWFmMSIsInVzZXJfaWQiOjJ9.dwV7qzZ_5OxK-wNYGOt77uZbFRGRloXs5EH7stcyVeQ`
+        "Authorization": `Bearer ${token}`
       }
     };
     fetch("https://dejavuhq.xyz/api/habits", requestOptions)
@@ -29,7 +30,6 @@ const Home = () => {
       })
       .catch(error => console.log('error', error));
   }
-  //getHabits();
   console.log(habits);
 
   const handleSubmit = (e) => {
@@ -53,7 +53,7 @@ const Home = () => {
       headers: {
         "Content-Type": "application/json",
         /* "Authorization": `Bearer ${user.token}` */
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTA4NTMwLCJqdGkiOiI4NWRhMTZlOTRlOWU0MjFmYjdkNGM4NDBjM2E0MWFmMSIsInVzZXJfaWQiOjJ9.dwV7qzZ_5OxK-wNYGOt77uZbFRGRloXs5EH7stcyVeQ`
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify(habit)
     };
