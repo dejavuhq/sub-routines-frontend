@@ -131,7 +131,7 @@ export class RegisterForm extends React.Component{
           <button type="submit" className="btn">Continuar</button>
         </form>
 
-      <Link to="/login">Have an account? Login</Link>
+        <Link to="/login">Have an account? Login</Link>
       </main>
     )
   }
