@@ -11,8 +11,8 @@ const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
-  const today = new Date().toString();
-  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTcxNTE0LCJqdGkiOiJlMGI1ZWI0NDVjZjE0ZTVlOGZmNDlhN2IwYTBkMGMzZiIsInVzZXJfaWQiOjJ9.L4xAme_Z_Ac7JVrU2BnsOWzWXxlpEW3Vaq7lgGwfTeo";
+  const today = new Date().toString().split(' ').slice(0, 4).join(' ');
+  const token = user.token || "";
 
   useEffect(() => {
     getHabits();
@@ -68,13 +68,13 @@ const Home = () => {
     <div className="home">
       <header className='header'>
         <p>{today}</p>
-        <h2>Hábitos para hoy:</h2>
+        <h2>Today:</h2>
         <div id="habits">
           {habits.map(item =>
             <HabitSmall key={item.id} {...item} />
           )}
         </div>
-        <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button>
+        <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Add Habit</button>
         {habits.length == 0 ? <p>Aún no has registrado ningún hábito</p> : null}
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
         {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
