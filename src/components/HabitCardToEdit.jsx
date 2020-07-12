@@ -8,19 +8,21 @@ export class HabitCardToEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Cambiar este data por algo mas semantico
       data: {
-        id: this.props.data.id || 12345,
-        name: this.props.data.name || "Estudiar",
-        description: this.props.data.description || "Estudiar para no perder el semestre",
-        recurrence: this.props.data.recurrence || "Lunes a viernes",
-        is_public: this.props.data.is_public || true,
-        is_paused: this.props.data.is_paused || false,
-        start_date: this.props.data.start_date || "07/09/2019",
-        end_date: this.props.data.end_date || null,
-        total_instances: this.props.data.total_instances || 7,
-        total_instances_done: this.props.data.total_instances_done || 7,
-        completion_rate: this.props.data.completion_rate || 1.0
-      }
+        id: this.props.data.itemData.id || 123,
+        name: this.props.data.itemData.name || "Estudiar",
+        description: this.props.data.itemData.description || "Estudiar para no perder el semestre",
+        recurrence: this.props.data.itemData.recurrence || "Lunes a viernes",
+        is_public: this.props.data.itemData.is_public || false,
+        is_paused: this.props.data.itemData.is_paused || false,
+        start_date: this.props.data.itemData.start_date || "07/09/2019",
+        end_date: this.props.data.itemData.end_date || null,
+        total_instances: this.props.data.itemData.total_instances || 7,
+        total_instances_done: this.props.data.itemData.total_instances_done || 7,
+        completion_rate: this.props.data.itemData.completion_rate || 1.0
+      },
+      token: this.props.data.token
     }
   }
   render() {
@@ -29,16 +31,19 @@ export class HabitCardToEdit extends React.Component {
         <Link
           to={
             {
-              pathname: `/configuration/habits/${this.state.data.id}`,
+              pathname: `/configuration/habits/${this.props.data.itemData.id}`,
               state: {
-                habitData: this.state.data
+                data: this.state
               }
             }}
           className="habitCardToEdit__editButton"><MdModeEdit size="20px"/></Link>
-        <h3 className="habitCardToEdit__name">{this.state.data.name}</h3>
-        <p className="habitCardToEdit__frequency">Frecuencia: {this.state.data.recurrence}</p>
-        <p className="habitCardToEdit__startDate">Inicio: {this.state.data.start_date}</p>
-        <p className="habitCardToEdit__finishDate">Final: {this.state.data.end_date? this.state.data.end_date: "Indefinido"}</p>
+        <h3 className="habitCardToEdit__name">{this.props.data.itemData.name}</h3>
+        <p className="habitCardToEdit__frequency">Frecuencia: {this.props.data.itemData.recurrence}</p>
+        <p className="habitCardToEdit__frequency">
+          Privacidad: {this.props.data.itemData.is_public? "Público": "Privado"}
+        </p>
+        <p className="habitCardToEdit__startDate">Inicio: {this.props.data.itemData.start_date}</p>
+        <p className="habitCardToEdit__finishDate">Final: {this.props.data.itemData.end_date? this.props.data.itemData.end_date: "Indefinido"}</p>
       </div>
     )
   }
