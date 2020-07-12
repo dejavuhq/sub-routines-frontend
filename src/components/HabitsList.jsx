@@ -1,9 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext, useState, useEffect } from "react";
 import { HabitCard } from "./HabitCard";
 import { HabitCardToEdit } from "./HabitCardToEdit";
+import UserContext from '../context/UserContext';
 
-export const HabitsList = ({ habits }) => {
-  if(habits === "publics") {
+export const HabitsList = ({ filter="habits", method="GET", publicHabits = false}) => {
+  const { user, setUser } = useContext(UserContext);
+  const [habits, setHabits] = useState([]);
+
+  useEffect(()=> {
+    const requestOptions = {
+      method: method,
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    fetch(`https://dejavuhq.xyz/api/${filter}`, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      if(result.results) {
+        setHabits(result.results)
+      }
+    })
+    .catch(error => console.log('Error', error));
+  }, []);
+
+  if(filter === "habits" && publicHabits) {
     return (
       <Fragment>
         <HabitCard />
@@ -11,15 +32,15 @@ export const HabitsList = ({ habits }) => {
         <HabitCard />
       </Fragment>
     )
-  } else if(habits === "all") {
+  } else if(filter === "habits") {
     return (
       <Fragment>
-        <HabitCardToEdit />
-        <HabitCardToEdit />
-        <HabitCardToEdit />
+        {
+          habits.map( item => <HabitCardToEdit key={item.id} data={item}/>)
+        }
       </Fragment>
     )
-  } else if(habits === "forToday") {
+  } else if(filter === "instances") {
     return (
       <Fragment>
         <HabitCardToComplete />
