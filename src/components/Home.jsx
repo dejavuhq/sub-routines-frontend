@@ -12,13 +12,10 @@ const Home = () => {
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString();
   const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTIxNjc2LCJqdGkiOiIzZWZhNzgyMmY0M2Y0N2I0YTA1YTkzOGM0MDIyZGE5NCIsInVzZXJfaWQiOjJ9.J_2aEOJ0SpdecDHWpBhU4ll88lFNtP4W8GhgdBOvcp8";
-  //console.log('This is the user in Home:')
-  //console.log(user);
 
   useEffect(() => {
-    // Update the document title using the browser API
     getHabits();
-  });
+  }, []);
   
 
   const getHabits = () => {
@@ -35,8 +32,6 @@ const Home = () => {
       })
       .catch(error => console.log('error', error));
   }
-
-  console.log(habits);
 
   const handleSubmit = (e) => {
     e.preventDefault();
