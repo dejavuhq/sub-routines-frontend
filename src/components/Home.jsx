@@ -49,6 +49,7 @@ const Home = () => {
       </header>
       <HabitGraph />
       <Link to="/configuration/habits">Habitooos</Link>
+      <Link to="/configuration/profile">Perfillll</Link>
       <Nav />
     </>
   );

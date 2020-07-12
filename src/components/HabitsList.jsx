@@ -21,7 +21,7 @@ export const HabitsList = ({ filter="habits", method="GET", publicHabits = false
         setHabits(result.results)
       }
     })
-    .catch(error => console.log('Errooor', error));
+    .catch(error => console.log('Error', error));
   }, []);
 
   if(filter === "habits" && publicHabits) {
