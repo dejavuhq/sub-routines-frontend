@@ -32,9 +32,6 @@
   &::placeholder {
     color: #5e666db6;
   }
-  &:invalid {
-    box-shadow: 0px 0px 3px 1px #dc3545;
-  }
 }
 .EditHabit__submitButton {
   display: block;

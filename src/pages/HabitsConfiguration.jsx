@@ -14,7 +14,7 @@ export class HabitsConfiguration extends React.Component{
             background: "white"
           }
         }>
-        <HabitsList habits="all"/>
+        <HabitsList filter="habits" method="GET" publicHabits={false} />
       </section>
     )
   }

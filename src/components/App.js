@@ -13,6 +13,7 @@ import { HabitsConfiguration } from "../pages/HabitsConfiguration";
 import { EditHabit } from "../pages/EditHabit";
 
 import "../assets/styles/main.scss";
+import LandingPage from './LandingPage';
 
 const App = () => {
   /* const user = {
@@ -30,6 +31,7 @@ const App = () => {
     <UserProvider value={value}>
       <BrowserRouter>
         <Switch>
+          <Route exact path='/' component={LandingPage} />
           <Route exact path='/home' component={Home} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' render={(props) => (<Login />)} />

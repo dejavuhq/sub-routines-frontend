@@ -14,6 +14,7 @@
   margin: 0;
   font-size: 20px;
   font-weight: 500;
+  color: #262626;
 }
 .profile__username {
   margin: 0;
@@ -22,16 +23,20 @@
   color: #ababb8;
 }
 .profile__biography {
+  width: 100%;
   margin: 0;
-  padding: 20px 10px 5px;
+  padding: 20px 10px 0px;
   font-size: 14px;
+  color: #262626;
+  overflow: hidden;
 }
 .profile__joinDate {
   width: 100%;
   padding: 0 10px;
-  margin: 0;
+  margin: 15px 0;
   margin-bottom: 20px;
   font-size: 14px;
+  color: #262626;
 }
 .profile__links {
   display: flex;

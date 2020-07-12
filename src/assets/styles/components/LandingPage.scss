@@ -1,0 +1,42 @@
+body {
+  background-color: white;
+}
+.landing-page {
+  background-color: white;
+  color: #333;
+  header {
+    height: 60px;
+    background-color: white;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .logo {
+    width: 90px;
+    height: auto;
+  }
+  h1 {
+    text-align: center;
+    line-height: 1.2;
+    font-size: 1.7rem;
+    span {
+      //font-size: 0.9em;
+    }
+  }
+  .cta-btn {
+    padding: 12px 20px;
+    background-color: #FC5A35;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    display: block;
+    margin: 30px auto;
+    a {
+      color: white;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+  }
+}

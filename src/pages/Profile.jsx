@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { HabitsList } from "../components/HabitsList";
 import { UserStats } from "../components/UserStats";
-
+import UserContext from '../context/UserContext';
 import "../assets/styles/pages/Profile.scss";
 
 export const Profile = () => {
+  const { user, setUser } = useContext(UserContext)
   const [lookingStats, setLookingStats] = useState(false);
   const handleClick = (e) => {
     const habitsButton = document.getElementsByName("habits")[0];
@@ -24,10 +25,14 @@ export const Profile = () => {
       <img
         className="profile__image"
         src="https://pbs.twimg.com/profile_images/1062767896269590528/vOsDt9up_400x400.jpg" />
-      <h2 className="profile__name">John Freddy Vega</h2>
-      <h3 className="profile__username">@freddier</h3>
-      <p className="profile__biography">Cofounder and CEO of Platzi: With over 1,000,000 students around the world, Platzi is the biggest tech school in Latam.</p>
-      <p className="profile__joinDate">Fecha de union: <span>20/08/2019</span></p>
+      <h2 className="profile__name">{user.user.first_name} {user.user.last_name}</h2>
+      <h3 className="profile__username">@{user.user.username}</h3>
+      {
+        user.user.biography
+        ?<p className="profile__biography">{user.user.biography}</p>
+        : null
+      }
+      <p className="profile__joinDate">Fecha de union: <span>{user.user.created_at}</span></p>
       <div className="profile__links">
         <button className="profile__button active" name="habits" onClick={handleClick}>Habitos</button>
         <button className="profile__button" name="stats" onClick={handleClick}>Estadisticas</button>
@@ -35,7 +40,7 @@ export const Profile = () => {
       {
         lookingStats
         ? <UserStats/>
-        : <HabitsList habits="publics"/>
+        : <HabitsList filter="habits" publicHabits/>
       }
     </main>
   );

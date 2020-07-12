@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import UserContext from '../context/UserContext';
 import AddHabit from './AddHabit';
 import HabitSmall from './HabitSmall';
@@ -10,8 +11,8 @@ const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
-  const today = new Date().toString();
-  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTIxNjc2LCJqdGkiOiIzZWZhNzgyMmY0M2Y0N2I0YTA1YTkzOGM0MDIyZGE5NCIsInVzZXJfaWQiOjJ9.J_2aEOJ0SpdecDHWpBhU4ll88lFNtP4W8GhgdBOvcp8";
+  const today = new Date().toString().split(' ').slice(0, 4).join(' ');
+  const token = user.token || "";
 
   useEffect(() => {
     getHabits();
@@ -40,7 +41,7 @@ const Home = () => {
     const habit = {
       name: target.title.value,
       description: target.notes.value,
-      recurrence: target.frequency.value,
+      recurrence: target.rrule.value,
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
@@ -67,18 +68,21 @@ const Home = () => {
     <div className="home">
       <header className='header'>
         <p>{today}</p>
-        <h2>Hábitos para hoy:</h2>
+        <h2>Today:</h2>
         <div id="habits">
           {habits.map(item =>
             <HabitSmall key={item.id} {...item} />
           )}
         </div>
-        <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button>
+        <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Add Habit</button>
         {habits.length == 0 ? <p>Aún no has registrado ningún hábito</p> : null}
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
         {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
       </header>
       <HabitGraph />
+      <Link to="/configuration/habits">ConfigHabitooos</Link>
+      <Link to="/configuration/profile">ConfigPerfillll</Link>
+      <Link to="/profile">Perfi</Link>
       <Nav />
     </div>
   );
