@@ -27,9 +27,10 @@ export const HabitsList = ({ filter="habits", method="GET", publicHabits = false
   if(filter === "habits" && publicHabits) {
     return (
       <Fragment>
-        <HabitCard />
-        <HabitCard />
-        <HabitCard />
+        {
+          habits.filter( item => item.is_public)
+          .map( item => <HabitCard key={item.id} data={item}/>)
+        }
       </Fragment>
     )
   } else if(filter === "habits") {
