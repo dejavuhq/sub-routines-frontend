@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import UserContext from '../context/UserContext';
 import AddHabit from './AddHabit';
 import HabitSmall from './HabitSmall';
@@ -11,15 +11,18 @@ const Home = () => {
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString();
-  //console.log('This is the user in Home:')
-  //console.log(user);
+  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTIxNjc2LCJqdGkiOiIzZWZhNzgyMmY0M2Y0N2I0YTA1YTkzOGM0MDIyZGE5NCIsInVzZXJfaWQiOjJ9.J_2aEOJ0SpdecDHWpBhU4ll88lFNtP4W8GhgdBOvcp8";
+
+  useEffect(() => {
+    getHabits();
+  }, []);
   
 
   const getHabits = () => {
     const requestOptions = {
       method: 'GET',
       headers: {
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NDIzNTM4LCJqdGkiOiIxYWUxNjVlNGM0ZTc0NTVkYmI2MzUyNjZkMmU5NDZmMiIsInVzZXJfaWQiOjJ9.sRah49EELK3hcProcYr68RUm9s5pjq67scWTHoXkwgs`
+        "Authorization": `Bearer ${token}`
       }
     };
     fetch("https://dejavuhq.xyz/api/habits", requestOptions)
@@ -29,8 +32,6 @@ const Home = () => {
       })
       .catch(error => console.log('error', error));
   }
-  //getHabits();
-  console.log(habits);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ const Home = () => {
       headers: {
         "Content-Type": "application/json",
         /* "Authorization": `Bearer ${user.token}` */
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NDIzNTM4LCJqdGkiOiIxYWUxNjVlNGM0ZTc0NTVkYmI2MzUyNjZkMmU5NDZmMiIsInVzZXJfaWQiOjJ9.sRah49EELK3hcProcYr68RUm9s5pjq67scWTHoXkwgs`
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify(habit)
     };
@@ -72,9 +73,10 @@ const Home = () => {
             <HabitSmall key={item.id} {...item} />
           )}
         </div>
-        <button onClick={getHabits}>Load Habits</button>
-        <p>Aún no has registrado ningún hábito <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button></p>
+        <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Agregar Hábito</button>
+        {habits.length == 0 ? <p>Aún no has registrado ningún hábito</p> : null}
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
+        {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
       </header>
       <HabitGraph />
       <Nav />
