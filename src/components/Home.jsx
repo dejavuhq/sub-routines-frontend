@@ -12,7 +12,7 @@ const Home = () => {
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString();
-  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTIxNjc2LCJqdGkiOiIzZWZhNzgyMmY0M2Y0N2I0YTA1YTkzOGM0MDIyZGE5NCIsInVzZXJfaWQiOjJ9.J_2aEOJ0SpdecDHWpBhU4ll88lFNtP4W8GhgdBOvcp8";
+  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NTcxNTE0LCJqdGkiOiJlMGI1ZWI0NDVjZjE0ZTVlOGZmNDlhN2IwYTBkMGMzZiIsInVzZXJfaWQiOjJ9.L4xAme_Z_Ac7JVrU2BnsOWzWXxlpEW3Vaq7lgGwfTeo";
 
   useEffect(() => {
     getHabits();
@@ -41,7 +41,7 @@ const Home = () => {
     const habit = {
       name: target.title.value,
       description: target.notes.value,
-      recurrence: target.frequency.value,
+      recurrence: target.rrule.value,
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,

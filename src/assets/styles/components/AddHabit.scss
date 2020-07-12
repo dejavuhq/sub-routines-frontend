@@ -1,3 +1,5 @@
+//@import '~bootstrap/dist/css/bootstrap.css';
+@import '~react-rrule-generator/build/styles.css';
 .main {
   width: 80%;
   margin: 20px auto;
@@ -48,6 +50,12 @@
     height: auto;
     background-color: white;
     color: black;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .form-group {
+    display: flex;
   }
   label {
     font-size: 0.9rem;
