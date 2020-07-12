@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { HabitsList } from "../components/HabitsList";
 import { UserStats } from "../components/UserStats";
 import UserContext from '../context/UserContext';
+import Nav from "../components/Nav";
 import "../assets/styles/pages/Profile.scss";
 
 export const Profile = () => {
@@ -42,6 +43,7 @@ export const Profile = () => {
         ? <UserStats/>
         : <HabitsList filter="habits" publicHabits/>
       }
+      <Nav/>
     </main>
   );
 }

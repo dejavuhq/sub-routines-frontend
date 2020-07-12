@@ -78,9 +78,6 @@ const Home = () => {
         {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
       </header>
       <HabitGraph />
-      <Link to="/configuration/habits">ConfigHabitooos</Link>
-      <Link to="/configuration/profile">ConfigPerfillll</Link>
-      <Link to="/profile">Perfi</Link>
       <Nav />
     </div>
   );

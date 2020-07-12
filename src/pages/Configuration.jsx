@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 import { BsCardList } from "react-icons/bs";
+import Nav from "../components/Nav";
 import "../assets/styles/pages/Configuration.scss";
 
 export const Configuration = () => {
@@ -15,6 +16,7 @@ export const Configuration = () => {
         <BsCardList className="icon" size="25px"/>
         Mis hábitos
       </Link>
+      <Nav/>
     </section>
   )
 }
