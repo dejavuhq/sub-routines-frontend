@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import UserContext from '../context/UserContext';
+import Nav from "../components/Nav";
 import "../assets/styles/pages/ProfileConfiguration.scss";
 
 export const ProfileConfiguration = (props) => {
@@ -127,6 +128,7 @@ export const ProfileConfiguration = (props) => {
         </div>
         <button type="submit" className="profileConfiguration__submitButton">Guardar</button>
       </form>
+      <Nav/>
     </section>
   )
 }

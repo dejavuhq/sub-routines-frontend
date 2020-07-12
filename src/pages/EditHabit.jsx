@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { FcLock } from "react-icons/fc"
+import { FcLock } from "react-icons/fc";
+import Nav from "../components/Nav";
 import "../assets/styles/pages/EditHabit.scss";
 
 class EditHabitComponent extends React.Component {
@@ -123,6 +124,7 @@ class EditHabitComponent extends React.Component {
           </div>
           <button type="submit" className="EditHabit__submitButton">Guardar</button>
         </form>
+        <Nav/>
       </section>
     )
   }

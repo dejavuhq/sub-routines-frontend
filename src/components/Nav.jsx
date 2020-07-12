@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { MdHome, MdSettings, MdPerson } from "react-icons/md";
 import '../assets/styles/components/Nav.scss';
 
 const Nav = () => {
+  const SIZE = "32px";
   return (
     <nav>
-      <ul>
-        <li><Link to="/home">Home</Link></li>
-        <li><Link to="/habits">Habits</Link></li>
-        <li><Link to="/profile">Home</Link></li>
-      </ul>
+      <Link className="nav__button" to="/home"><MdHome size={SIZE}/></Link>
+      <Link className="nav__button" to="/profile"><MdPerson size={SIZE}/></Link>
+      <Link className="nav__button" to="/configuration"><MdSettings size={SIZE}/></Link>
     </nav>
   );
 }
