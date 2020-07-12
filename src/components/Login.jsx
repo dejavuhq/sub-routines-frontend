@@ -30,11 +30,19 @@ const Login = () => {
           const res = response.json();
           res.then((result) => {
             //console.log(result.token);
-            setUser({
-              user: result.user,
-              token: result.token,
-              stats: result.stats,
-            });
+            if (result.user.biography === null) {
+              setUser({
+                user: { ...result.user, biography: '' },
+                token: result.token,
+                stats: result.stats,
+              });
+            } else {
+              setUser({
+                user: result.user,
+                token: result.token,
+                stats: result.stats,
+              });
+            }
             history.push('/home');
           });
         } else {

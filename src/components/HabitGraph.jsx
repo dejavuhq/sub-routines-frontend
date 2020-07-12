@@ -15,7 +15,6 @@ function HabitGraph() {
   } = useContext(UserContext);
 
   const hasLength = stats && stats.length;
-  const starDate = hasLength && new Date(stats[stats.length - 1].date);
   const endDate = hasLength && new Date();
   let data = [];
 
@@ -39,7 +38,6 @@ function HabitGraph() {
       return result;
     });
   }
-
 
   return hasLength ? (
     <div className="graph">
