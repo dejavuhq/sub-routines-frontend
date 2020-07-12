@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import UserContext from '../context/UserContext';
 import AddHabit from './AddHabit';
 import HabitSmall from './HabitSmall';
@@ -79,6 +80,8 @@ const Home = () => {
         {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
       </header>
       <HabitGraph />
+      <Link to="/configuration/habits">Habitooos</Link>
+      <Link to="/configuration/profile">Perfillll</Link>
       <Nav />
     </div>
   );

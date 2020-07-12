@@ -27,7 +27,6 @@ class EditHabitComponent extends React.Component {
           <div className="form-group">
             <label className="EditHabit__form-group-label">Nombre</label>
             <input
-              required
               className="EditHabit__form-control"
               type="text"
               name="name"
@@ -37,7 +36,6 @@ class EditHabitComponent extends React.Component {
           <div className="form-group">
             <label className="EditHabit__form-group-label">Descripción</label>
             <input
-              required
               className="EditHabit__form-control"
               type="text"
               name="description"
