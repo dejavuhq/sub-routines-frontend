@@ -24,7 +24,7 @@ export const Profile = () => {
     <main className="profile">
       <img
         className="profile__image"
-        src="https://pbs.twimg.com/profile_images/1062767896269590528/vOsDt9up_400x400.jpg" />
+        src={user.user.picture} />
       <h2 className="profile__name">{user.user.first_name} {user.user.last_name}</h2>
       <h3 className="profile__username">@{user.user.username}</h3>
       {

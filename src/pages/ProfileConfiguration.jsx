@@ -23,15 +23,24 @@ export const ProfileConfiguration = (props) => {
       "token": user.token,
     })
   }
+  const handleImageChange = (e) => {
+    setUser({
+      user: {
+        ...user.user,
+        picture: e.target.files[0],
+      },
+      token: user.token,
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
     let requestOptions = {
       method: "PATCH",
       headers: {
-        "Authorization": `Bearer ${user.token}`,
-        "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token}`
       },
-      body: JSON.stringify(user.user)
+      body: formData
     };
     fetch(`https://dejavuhq.xyz/api/users/${user.user.username}`, requestOptions)
     .then(response => {
@@ -55,7 +64,12 @@ export const ProfileConfiguration = (props) => {
         src="https://pbs.twimg.com/profile_images/1062767896269590528/vOsDt9up_400x400.jpg"
       />
       <button className="profileConfiguration__changeImageButton">Cambiar foto de perfil</button>
-      <form className="profileConfiguration__form" onSubmit={handleSubmit}>
+      <form 
+        className="profileConfiguration__form"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
+        <input type="file" name="picture" onChange={handleImageChange} />
         <div className="form-group">
           <label className="profileConfiguration__form-group-label">Nombres</label>
           <input
