@@ -12,12 +12,29 @@ const Home = () => {
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString().split(' ').slice(0, 4).join(' ');
-  const token = user.token || "";
+  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NjAyMDY3LCJqdGkiOiJhMDQxZTY2MWE0OWM0MThlYTcyNDFmMTYyMGVlODI3ZiIsInVzZXJfaWQiOjJ9.GsMcHx96aHGKSzzZniZ1Aqnn8KgeZereLS0a49baD5Y";
 
   useEffect(() => {
     getHabits();
   }, []);
   
+  const markHabitAsDone = (id) => {
+    const body = {
+      is_done: true
+    }
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify(body)
+    };
+    fetch(`https://dejavuhq.xyz/api/instances/${id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
 
   const getHabits = () => {
     const requestOptions = {
@@ -26,17 +43,21 @@ const Home = () => {
         "Authorization": `Bearer ${token}`
       }
     };
-    fetch("https://dejavuhq.xyz/api/habits", requestOptions)
+    fetch("https://dejavuhq.xyz/api/instances", requestOptions)
       .then(response => response.json())
       .then(result => {
-        setHabits(result.results);
+        console.log(result)
+        setHabits(result);
       })
       .catch(error => console.log('error', error));
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    var date = new Date(); // Or the date you'd like converted.
+    var isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 21600)).toISOString().substr(0, 10);
     let dateNow = new Date().toISOString().substr(0, 10);
+    console.log(isoDateTime);
     const target = e.target;
     const habit = {
       name: target.title.value,
@@ -45,9 +66,10 @@ const Home = () => {
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
-      start_date: dateNow,
+      start_date: isoDateTime,
       endDate: null,
     }
+    console.log(habit);
 
     const requestOptions = {
       method: 'POST',
@@ -69,7 +91,7 @@ const Home = () => {
         <h2>Today:</h2>
         <div id="habits">
           {habits.map(item =>
-            <HabitSmall key={item.id} {...item} />
+            !item.is_done ? <HabitSmall key={item.id} {...item} markHabitAsDone={markHabitAsDone} /> : <HabitSmall key={item.id} {...item} markHabitAsDone={markHabitAsDone} done={true} />
           )}
         </div>
         <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Add Habit</button>
