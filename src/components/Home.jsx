@@ -12,7 +12,7 @@ const Home = () => {
   const [habits, setHabits] = useState([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString().split(' ').slice(0, 4).join(' ');
-  const token = user.token || "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk0NjAyMDY3LCJqdGkiOiJhMDQxZTY2MWE0OWM0MThlYTcyNDFmMTYyMGVlODI3ZiIsInVzZXJfaWQiOjJ9.GsMcHx96aHGKSzzZniZ1Aqnn8KgeZereLS0a49baD5Y";
+  const token = user.token || "";
 
   useEffect(() => {
     getHabits();
