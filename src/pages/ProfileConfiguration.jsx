@@ -6,6 +6,7 @@ import "../assets/styles/pages/ProfileConfiguration.scss";
 export const ProfileConfiguration = (props) => {
   const { user, setUser } = useContext(UserContext)
   const [ usernameError, setUsernameError] = useState(null);
+  const [ currentUsername, setcurrentUsername] = useState(user.user.username);
   const handleChange = (e) => {
     setUser({
       "user": {
@@ -43,7 +44,7 @@ export const ProfileConfiguration = (props) => {
       },
       body: formData
     };
-    fetch(`https://dejavuhq.xyz/api/users/${user.user.username}`, requestOptions)
+    fetch(`https://dejavuhq.xyz/api/users/${currentUsername}`, requestOptions)
     .then(response => {
       if(response.status === 200){
         props.history.push("/profile");
@@ -62,15 +63,19 @@ export const ProfileConfiguration = (props) => {
     <section className="profileConfiguration">
       <img
         className="profileConfiguration__image"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb_Hhic635ynT_DOoTuvLCUqKNXjVmCa0HxA&usqp=CAU"
+        src={
+          user.user.picture
+          ? user.user.picture
+          :"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb_Hhic635ynT_DOoTuvLCUqKNXjVmCa0HxA&usqp=CAU"
+        }
       />
-      <button className="profileConfiguration__changeImageButton">Cambiar foto de perfil</button>
+      <label htmlFor="uploadPicture" className="profileConfiguration__changeImageButton">Change profile photo</label>
       <form
         className="profileConfiguration__form"
         encType="multipart/form-data"
         onSubmit={handleSubmit}
       >
-        <input type="file" name="picture" onChange={handleImageChange} />
+        <input type="file" id="uploadPicture" name="picture" onChange={handleImageChange} />
         <div className="form-group">
           <label className="profileConfiguration__form-group-label">First name</label>
           <input
