@@ -61,8 +61,6 @@ const Home = () => {
     e.preventDefault();
     var date = new Date(); // Or the date you'd like converted.
     var isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 21600)).toISOString().substr(0, 10);
-    let dateNow = new Date().toISOString().substr(0, 10);
-    console.log(isoDateTime);
     const target = e.target;
     const habit = {
       name: target.title.value,
@@ -74,7 +72,6 @@ const Home = () => {
       start_date: isoDateTime,
       endDate: null,
     }
-    console.log(habit);
 
     const requestOptions = {
       method: 'POST',
