@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import UserContext from '../context/UserContext';
 import Nav from "../components/Nav";
 import "../assets/styles/pages/ProfileConfiguration.scss";
 
 export const ProfileConfiguration = (props) => {
   const { user, setUser } = useContext(UserContext)
-
+  const [ usernameError, setUsernameError] = useState(null);
   const handleChange = (e) => {
     setUser({
       "user": {

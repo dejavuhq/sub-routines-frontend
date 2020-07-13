@@ -13,6 +13,10 @@
 .form {
   padding: 0 20px;
 }
+.formError {
+  font-weight: 500;
+  color: #dc3545;
+}
 .form-group {
   margin: 15px 0;
 }
@@ -52,4 +56,11 @@ input[name="passwordConfirmation"]:invalid:focus {
   border: 0;
   background-color: #478dca;
   cursor: pointer;
+}
+.existAccount {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  text-decoration: none;
+  color: #3f4852;
 }

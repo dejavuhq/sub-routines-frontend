@@ -1,8 +1,8 @@
 import React from "react";
 import { RegisterValidationForm } from "../components/RegisterValidationForm";
 
-export const RegisterValidation = () => {
+export const RegisterValidation = (props) => {
   return (
-    <RegisterValidationForm/>
+    <RegisterValidationForm history={props.history}/>
   )
 };
