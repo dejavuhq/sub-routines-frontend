@@ -68,7 +68,7 @@ class EditHabitComponent extends React.Component {
           </div>
           <div className="form-group">
             <label
-              className="EditHabit__form-group-label">Recurrence<FcLock style={{marginLeft: "5px"}}/>
+              className="EditHabit__form-group-label">Frequency<FcLock style={{marginLeft: "5px"}}/>
               </label>
             <input
               disabled
