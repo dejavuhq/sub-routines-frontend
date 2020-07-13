@@ -6,6 +6,7 @@ import "../assets/styles/pages/ProfileConfiguration.scss";
 export const ProfileConfiguration = (props) => {
   const { user, setUser } = useContext(UserContext)
   const [ usernameError, setUsernameError] = useState(null);
+  const [ currentUsername, setcurrentUsername] = useState(user.user.username);
   const handleChange = (e) => {
     setUser({
       "user": {
@@ -24,17 +25,26 @@ export const ProfileConfiguration = (props) => {
       "token": user.token,
     })
   }
+  const handleImageChange = (e) => {
+    setUser({
+      user: {
+        ...user.user,
+        picture: e.target.files[0],
+      },
+      token: user.token,
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
     let requestOptions = {
       method: "PATCH",
       headers: {
-        "Authorization": `Bearer ${user.token}`,
-        "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token}`
       },
-      body: JSON.stringify(user.user)
+      body: formData
     };
-    fetch(`https://dejavuhq.xyz/api/users/${user.user.username}`, requestOptions)
+    fetch(`https://dejavuhq.xyz/api/users/${currentUsername}`, requestOptions)
     .then(response => {
       if(response.status === 200){
         props.history.push("/profile");
@@ -53,10 +63,19 @@ export const ProfileConfiguration = (props) => {
     <section className="profileConfiguration">
       <img
         className="profileConfiguration__image"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb_Hhic635ynT_DOoTuvLCUqKNXjVmCa0HxA&usqp=CAU"
+        src={
+          user.user.picture
+          ? user.user.picture
+          :"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb_Hhic635ynT_DOoTuvLCUqKNXjVmCa0HxA&usqp=CAU"
+        }
       />
-      <button className="profileConfiguration__changeImageButton">Change profile photo</button>
-      <form className="profileConfiguration__form" onSubmit={handleSubmit}>
+      <label htmlFor="uploadPicture" className="profileConfiguration__changeImageButton">Change profile photo</label>
+      <form
+        className="profileConfiguration__form"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
+        <input type="file" id="uploadPicture" name="picture" onChange={handleImageChange} />
         <div className="form-group">
           <label className="profileConfiguration__form-group-label">First name</label>
           <input

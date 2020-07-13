@@ -43,7 +43,7 @@ function HabitGraph() {
     <div className="graph">
       <CalendarHeatMap
         startDate={data[data.length - 1].date}
-        endDate={data[data[0].date]}
+        endDate={data[0].date}
         values={data}
         classForValue={(value) => {
           if (!value) {
