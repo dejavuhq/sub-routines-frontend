@@ -33,10 +33,10 @@ export const Profile = () => {
         ?<p className="profile__biography">{user.user.biography}</p>
         : null
       }
-      <p className="profile__joinDate">Fecha de union: <span>{user.user.created_at}</span></p>
+      <p className="profile__joinDate">Join date: <span>{user.user.created_at}</span></p>
       <div className="profile__links">
-        <button className="profile__button active" name="habits" onClick={handleClick}>Habitos</button>
-        <button className="profile__button" name="stats" onClick={handleClick}>Estadisticas</button>
+        <button className="profile__button active" name="habits" onClick={handleClick}>Habits</button>
+        <button className="profile__button" name="stats" onClick={handleClick}>Statistics</button>
       </div>
       {
         lookingStats

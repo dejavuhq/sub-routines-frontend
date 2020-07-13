@@ -10,11 +10,11 @@ export const Configuration = () => {
     <section className="configuration">
       <Link to="/configuration/profile" className="configuration__button">
         <FiUser className="icon" size="25px"/>
-        Mi perfil
+        My profile
       </Link>
       <Link to="/configuration/habits" className="configuration__button">
         <BsCardList className="icon" size="25px"/>
-        Mis hábitos
+        My habits
       </Link>
       <Nav/>
     </section>

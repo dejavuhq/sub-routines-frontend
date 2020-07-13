@@ -55,10 +55,10 @@ export const ProfileConfiguration = (props) => {
         className="profileConfiguration__image"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb_Hhic635ynT_DOoTuvLCUqKNXjVmCa0HxA&usqp=CAU"
       />
-      <button className="profileConfiguration__changeImageButton">Cambiar foto de perfil</button>
+      <button className="profileConfiguration__changeImageButton">Change profile photo</button>
       <form className="profileConfiguration__form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label className="profileConfiguration__form-group-label">Nombres</label>
+          <label className="profileConfiguration__form-group-label">First name</label>
           <input
             required
             className="profileConfiguration__form-control"
@@ -68,7 +68,7 @@ export const ProfileConfiguration = (props) => {
             onChange={handleChange}/>
         </div>
         <div className="form-group">
-          <label className="profileConfiguration__form-group-label">Apellidos</label>
+          <label className="profileConfiguration__form-group-label">Last name</label>
           <input
             required
             className="profileConfiguration__form-control"
@@ -78,7 +78,7 @@ export const ProfileConfiguration = (props) => {
             onChange={handleChange}/>
         </div>
         <div className="form-group">
-          <label className="profileConfiguration__form-group-label">Correo electrónico</label>
+          <label className="profileConfiguration__form-group-label">Email</label>
           <input
             required
             pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
@@ -100,7 +100,7 @@ export const ProfileConfiguration = (props) => {
             onChange={handleChange}/>
         </div>
         <div className="form-group">
-          <label className="profileConfiguration__form-group-label">Biografía</label>
+          <label className="profileConfiguration__form-group-label">Biography</label>
           <input
             maxLength="250"
             placeholder="Max 250 caracteres"
@@ -114,7 +114,7 @@ export const ProfileConfiguration = (props) => {
         <div className="form-group">
           <label
             className="profileConfiguration__form-group-label">
-            Establecer perfil como público
+            Set profile as public
           </label>
           <label className="switch">
             <input
@@ -124,9 +124,9 @@ export const ProfileConfiguration = (props) => {
               onChange={handleCheck}/>
             <span className="slider round"></span>
           </label>
-          <span>{user.user.is_public? "Sí" : "No"}</span>
+          <span>{user.user.is_public? "Yes" : "No"}</span>
         </div>
-        <button type="submit" className="profileConfiguration__submitButton">Guardar</button>
+        <button type="submit" className="profileConfiguration__submitButton">Save</button>
       </form>
       <Nav/>
     </section>

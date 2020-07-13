@@ -36,7 +36,7 @@ export const HabitsList = ({ filter="habits", method="GET", publicHabits = false
   } else if(filter === "habits") {
     return (
       <Fragment>
-        <h1 style={{color: "#262626", fontSize: "30px", fontWeight: "500"}}>Mis hábitos</h1>
+        <h1 style={{color: "#262626", fontSize: "30px", fontWeight: "500"}}>My habits</h1>
         {
           habits.map( item => <HabitCardToEdit key={item.id} data={{itemData: item, token: user.token}}/>)
         }

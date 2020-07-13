@@ -46,10 +46,10 @@ class EditHabitComponent extends React.Component {
   render() {
     return (
       <section className="EditHabit">
-        <h2 className="EditHabit__title">Editar hábito</h2>
+        <h2 className="EditHabit__title">Edit habit</h2>
         <form className="EditHabit__form" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label className="EditHabit__form-group-label">Nombre</label>
+            <label className="EditHabit__form-group-label">Name</label>
             <input
               className="EditHabit__form-control"
               type="text"
@@ -58,7 +58,7 @@ class EditHabitComponent extends React.Component {
               onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label className="EditHabit__form-group-label">Descripción</label>
+            <label className="EditHabit__form-group-label">Description</label>
             <input
               className="EditHabit__form-control"
               type="text"
@@ -68,7 +68,7 @@ class EditHabitComponent extends React.Component {
           </div>
           <div className="form-group">
             <label
-              className="EditHabit__form-group-label">Recurrencia<FcLock style={{marginLeft: "5px"}}/>
+              className="EditHabit__form-group-label">Recurrence<FcLock style={{marginLeft: "5px"}}/>
               </label>
             <input
               disabled
@@ -79,7 +79,7 @@ class EditHabitComponent extends React.Component {
               value={this.state.habitData.recurrence}/>
           </div>
           <div className="form-group">
-            <label className="EditHabit__form-group-label">Desea que el hábito sea público?</label>
+            <label className="EditHabit__form-group-label">Do you want the habit to be public?</label>
             <label className="switch">
               <input
                 name="is_public"
@@ -88,10 +88,10 @@ class EditHabitComponent extends React.Component {
                 onChange={this.handleCheck}/>
               <span className="slider round"></span>
             </label>
-            <span>{this.state.habitData.is_public? "Sí" : "No"}</span>
+            <span>{this.state.habitData.is_public? "Yes" : "No"}</span>
           </div>
           <div className="form-group">
-            <label className="EditHabit__form-group-label">Desea pausar el hábito?</label>
+            <label className="EditHabit__form-group-label">Do you want to pause the habit?</label>
             <label className="switch">
               <input
                 name="is_paused"
@@ -100,10 +100,10 @@ class EditHabitComponent extends React.Component {
                 onChange={this.handleCheck}/>
               <span className="slider round"></span>
             </label>
-            <span>{this.state.habitData.is_paused? "Sí" : "No"}</span>
+            <span>{this.state.habitData.is_paused? "Yes" : "No"}</span>
           </div>
           <div className="form-group">
-            <label className="EditHabit__form-group-label">Fecha de inicio<FcLock style={{marginLeft: "5px"}}/></label>
+            <label className="EditHabit__form-group-label">Start date<FcLock style={{marginLeft: "5px"}}/></label>
             <input
               disabled
               readOnly="readonly"
@@ -113,16 +113,17 @@ class EditHabitComponent extends React.Component {
               value={this.state.habitData.start_date}/>
           </div>
           <div className="form-group">
-            <label className="EditHabit__form-group-label">Fecha final<FcLock style={{marginLeft: "5px"}}/></label>
+            <label className="EditHabit__form-group-label">End date<FcLock style={{marginLeft: "5px"}}/></label>
             <input
               disabled
               readOnly="readonly"
               className="EditHabit__form-control"
               type="text"
               name="end_date"
-              value={this.state.habitData.end_date? this.state.habitData.end_date: "Sin establecer"}/>
+              value={this.state.habitData.end_date
+              ? this.state.habitData.end_date: "Not established"}/>
           </div>
-          <button type="submit" className="EditHabit__submitButton">Guardar</button>
+          <button type="submit" className="EditHabit__submitButton">Save</button>
         </form>
         <Nav/>
       </section>
