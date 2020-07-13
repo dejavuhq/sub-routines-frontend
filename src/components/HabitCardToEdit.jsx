@@ -38,12 +38,12 @@ export class HabitCardToEdit extends React.Component {
             }}
           className="habitCardToEdit__editButton"><MdModeEdit size="20px"/></Link>
         <h3 className="habitCardToEdit__name">{this.props.data.itemData.name}</h3>
-        <p className="habitCardToEdit__frequency">Frecuencia: {this.props.data.itemData.recurrence}</p>
+        <p className="habitCardToEdit__frequency">Frequency: {this.props.data.itemData.recurrence}</p>
         <p className="habitCardToEdit__frequency">
-          Privacidad: {this.props.data.itemData.is_public? "Público": "Privado"}
+          Privacidad: {this.props.data.itemData.is_public? "Public": "Private"}
         </p>
-        <p className="habitCardToEdit__startDate">Inicio: {this.props.data.itemData.start_date}</p>
-        <p className="habitCardToEdit__finishDate">Final: {this.props.data.itemData.end_date? this.props.data.itemData.end_date: "Indefinido"}</p>
+        <p className="habitCardToEdit__startDate">Start: {this.props.data.itemData.start_date}</p>
+        <p className="habitCardToEdit__finishDate">End: {this.props.data.itemData.end_date? this.props.data.itemData.end_date: "Not established"}</p>
       </div>
     )
   }
