@@ -10,6 +10,7 @@ import '../assets/styles/components/Home.scss';
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
+  const [count, setCount] = useState(0);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString().split(' ').slice(0, 4).join(' ');
   const token = user.token || "";
@@ -17,6 +18,9 @@ const Home = () => {
   useEffect(() => {
     getHabits();
   }, []);
+  useEffect(() => {
+    getHabits();
+  }, [count]);
   
   const markHabitAsDone = (id) => {
     const body = {
@@ -34,6 +38,7 @@ const Home = () => {
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+      setCount(count + 1);
   }
 
   const getHabits = () => {
@@ -83,21 +88,24 @@ const Home = () => {
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+    setCount(count + 1);
+    setShowAddHabit(false);
   }
   return (
     <div className="home">
       <header className='header'>
         <p>{today}</p>
         <h2>Today:</h2>
+        <button className="small-btn" onClick={() => setCount(count + 1)}>Reload habit list</button>
         <div id="habits">
           {habits.map(item =>
             !item.is_done ? <HabitSmall key={item.id} {...item} markHabitAsDone={markHabitAsDone} /> : <HabitSmall key={item.id} {...item} markHabitAsDone={markHabitAsDone} done={true} />
           )}
         </div>
         <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Add Habit</button>
-        {habits.length == 0 ? <p>Aún no has registrado ningún hábito</p> : null}
+        {habits.length == 0 ? <p>You don't have any habits yet</p> : null}
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
-        {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
+        {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancel</button> : null}
       </header>
       <HabitGraph />
       <Nav />
