@@ -10,6 +10,7 @@ import '../assets/styles/components/Home.scss';
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
+  const [count, setCount] = useState(0);
   const [showAddHabit, setShowAddHabit] = useState(false);
   const today = new Date().toString().split(' ').slice(0, 4).join(' ');
   const token = user.token || "";
@@ -17,7 +18,28 @@ const Home = () => {
   useEffect(() => {
     getHabits();
   }, []);
+  useEffect(() => {
+    getHabits();
+  }, [count]);
   
+  const markHabitAsDone = (id) => {
+    const body = {
+      is_done: true
+    }
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify(body)
+    };
+    fetch(`https://dejavuhq.xyz/api/instances/${id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+      setCount(count + 1);
+  }
 
   const getHabits = () => {
     const requestOptions = {
@@ -26,17 +48,21 @@ const Home = () => {
         "Authorization": `Bearer ${token}`
       }
     };
-    fetch("https://dejavuhq.xyz/api/habits", requestOptions)
+    fetch("https://dejavuhq.xyz/api/instances", requestOptions)
       .then(response => response.json())
       .then(result => {
-        setHabits(result.results);
+        console.log(result)
+        setHabits(result);
       })
       .catch(error => console.log('error', error));
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    var date = new Date(); // Or the date you'd like converted.
+    var isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 21600)).toISOString().substr(0, 10);
     let dateNow = new Date().toISOString().substr(0, 10);
+    console.log(isoDateTime);
     const target = e.target;
     const habit = {
       name: target.title.value,
@@ -45,9 +71,10 @@ const Home = () => {
       is_public: target.privacy.checked,
       is_completed: false,
       is_paused: false,
-      start_date: dateNow,
+      start_date: isoDateTime,
       endDate: null,
     }
+    console.log(habit);
 
     const requestOptions = {
       method: 'POST',
@@ -61,21 +88,24 @@ const Home = () => {
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+    setCount(count + 1);
+    setShowAddHabit(false);
   }
   return (
     <div className="home">
       <header className='header'>
         <p>{today}</p>
         <h2>Today:</h2>
+        <button className="small-btn" onClick={() => setCount(count + 1)}>Reload habit list</button>
         <div id="habits">
           {habits.map(item =>
-            <HabitSmall key={item.id} {...item} />
+            !item.is_done ? <HabitSmall key={item.id} {...item} markHabitAsDone={markHabitAsDone} /> : <HabitSmall key={item.id} {...item} markHabitAsDone={markHabitAsDone} done={true} />
           )}
         </div>
         <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Add Habit</button>
-        {habits.length == 0 ? <p>Aún no has registrado ningún hábito</p> : null}
+        {habits.length == 0 ? <p>You don't have any habits yet</p> : null}
         {showAddHabit ? <AddHabit handleSubmit={handleSubmit} /> : null}
-        {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancelar</button> : null}
+        {showAddHabit ? <button className="small-btn" onClick={() => setShowAddHabit(!showAddHabit)}>Cancel</button> : null}
       </header>
       <HabitGraph />
       <Nav />
