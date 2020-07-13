@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import "../assets/styles/components/RegisterValidationForm.scss";
 import Image from "../assets/SVGimages/SVG-Register-Verification.svg";
 
-export const RegisterValidationForm = () => {
+export const RegisterValidationForm = (props) => {
   const [token, setToken] = useState("");
-
+  const [registrationStatus, setRegistrationStatus] = useState(null)
   const handleChange = (e) => {
     setToken(e.target.value)
   };
@@ -20,15 +20,18 @@ export const RegisterValidationForm = () => {
     };
     fetch("https://dejavuhq.xyz/api/users/verify", requestOptions)
     .then(response => {
-      if(response.status === 201){
-        console.log("Done Register");
-      } else {
+      if(response.status === 200){
         return response.json();
       }
     })
     .then(result => {
-      if(result) {
-        console.log("result: ", result);
+      if(result){
+        if(result.hasOwnProperty("message")){
+          setRegistrationStatus(true);
+          setTimeout(() => {
+            props.history.push("/login");
+          }, 2500)
+        }
       }
     })
     .catch(error => console.log("Error:", error));
@@ -37,13 +40,21 @@ export const RegisterValidationForm = () => {
   return (
     <Fragment>
       <main className="main">
-        <h1 className="verification-title">Enviamos un código de confirmación a tu correo electrónico</h1>
+        <h1 className="verification-title">We send a confirmation code to your email</h1>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-group__label">Ingresa aquí el código</label>
+            <label className="form-group__label">Enter the code here</label>
             <input required className="form-control" type="text" value={token} onChange={handleChange}/>
           </div>
-          <button type="submit" className="btn">Empezar</button>
+          <small>
+            {
+              registrationStatus?
+              <small className="validationSuccess" >
+                Successful registration
+              </small>: null
+            }
+            </small>
+          <button type="submit" className="btn">Start!</button>
         </form>
       </main>
       <img src={Image} style={{display: "block", width: "80%", margin: "0 auto"}}/>

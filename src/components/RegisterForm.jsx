@@ -13,7 +13,9 @@ export class RegisterForm extends React.Component{
         email: "",
         password: "",
         passwordConfirmation: ""
-      }
+      },
+      usernameError: null,
+      emailError: null
     }
   }
 
@@ -51,8 +53,14 @@ export class RegisterForm extends React.Component{
       }
     })
     .then(result => {
-      if(result) {
-        console.log("result: ", result);
+      this.setState({usernameError: null, emailError: null})
+      if(result){
+        if(result.hasOwnProperty("username")){
+          this.setState({usernameError: true});
+        }
+        if(result.hasOwnProperty("email")){
+          this.setState({emailError: true});
+        }
       }
     })
     .catch(error => console.log("Error: ", error));
@@ -61,10 +69,10 @@ export class RegisterForm extends React.Component{
   render() {
     return (
       <main className="main">
-        <h1 className="title">Regístrate</h1>
+        <h1 className="title">Sign up</h1>
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label className="form-group__label">Nombres</label>
+            <label className="form-group__label">First name</label>
             <input
               required
               className="form-control"
@@ -74,7 +82,7 @@ export class RegisterForm extends React.Component{
               onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label className="form-group__label">Apellidos</label>
+            <label className="form-group__label">Last name</label>
             <input
               required
               className="form-control"
@@ -84,7 +92,15 @@ export class RegisterForm extends React.Component{
               onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label className="form-group__label">Correo electrónico</label>
+            <label className="form-group__label">Email</label>
+            <small>
+            {
+              this.state.emailError?
+              <small className="formError" >
+                email in use
+              </small>: null
+            }
+            </small>
             <input
               required
               pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
@@ -97,6 +113,11 @@ export class RegisterForm extends React.Component{
           </div>
           <div className="form-group">
             <label className="form-group__label">Username</label>
+            <small>
+            {
+              this.state.usernameError? <small className="formError" >username is not available</small>: null
+            }
+            </small>
             <input
               required
               className="form-control"
@@ -106,7 +127,7 @@ export class RegisterForm extends React.Component{
               onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label className="form-group__label">Nueva contraseña</label>
+            <label className="form-group__label">New password</label>
             <input
               required
               className="form-control"
@@ -117,7 +138,7 @@ export class RegisterForm extends React.Component{
               onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label className="form-group__label">Confirma la contraseña</label>
+            <label className="form-group__label">confirm password</label>
             <input
               required
               pattern={this.state.form.password}
@@ -128,10 +149,10 @@ export class RegisterForm extends React.Component{
               value={this.state.form.passwordConfirmation}
               onChange={this.handleChange}/>
           </div>
-          <button type="submit" className="btn">Continuar</button>
+          <button type="submit" className="btn">Continue</button>
         </form>
 
-        <Link to="/login">Have an account? Login</Link>
+        <Link to="/login" className="existAccount">Have an account? Login</Link>
       </main>
     )
   }

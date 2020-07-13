@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  margin-bottom: 50px;
   background: #fdfeff;
 }
 .profile__image {
@@ -48,6 +50,7 @@
 .profile__button {
   background: transparent;
   border: 0;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
